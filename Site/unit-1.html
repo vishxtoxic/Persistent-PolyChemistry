@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arc 1 Concepts - Ishika's Chemistry Arsenal</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css?v=5">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="unit-1.html" class="active">Arc 1: Concepts</a></li>
+      <li><a href="unit-1-practice.html">Arc 1: Trials</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <header>
+      <h1><span class="villainess-icon">♛</span> Arc 1: Some Basic Concepts of Chemistry</h1>
+      <p>Expand each concept card to explore and understand the foundations of chemistry.</p>
+    </header>
+
+    <section class="concept-cards" id="conceptCardsContainer">
+      <!-- Concept cards will be loaded here by JavaScript -->
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>✨ Ishika's Chemistry Arsenal | Built to help you succeed | Made with 💜 for chemistry lovers</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Load and render concept cards on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      renderConceptCards();
+    });
+
+    async function renderConceptCards() {
+      try {
+        // Try multiple fetch paths in case of server configuration variations
+        let response;
+        let errorMessage = '';
+        
+        const pathsToTry = [
+          '/data/unit1.json',
+          '../data/unit1.json',
+          './data/unit1.json'
+        ];
+
+        for (const path of pathsToTry) {
+          try {
+            response = await fetch(path);
+            if (response.ok) {
+              break;
+            } else {
+              errorMessage += `Path ${path}: ${response.status} | `;
+            }
+          } catch (e) {
+            errorMessage += `Path ${path}: ${e.message} | `;
+            response = null;
+          }
+        }
+
+        if (!response || !response.ok) {
+          throw new Error(`Failed to fetch data. Attempts: ${errorMessage}`);
+        }
+
+        const data = await response.json();
+        if (!data.questions) {
+          throw new Error('Invalid data format: questions array not found');
+        }
+        
+        // Extract unique concepts
+        const conceptsMap = new Map();
+        data.questions.forEach(question => {
+          if (!conceptsMap.has(question.concept)) {
+            conceptsMap.set(question.concept, {
+              concept: question.concept,
+              questions: []
+            });
+          }
+          conceptsMap.get(question.concept).questions.push(question);
+        });
+
+        const container = document.getElementById('conceptCardsContainer');
+        container.innerHTML = '';
+
+        conceptsMap.forEach((conceptData, conceptName) => {
+          const card = createConceptCard(conceptName, conceptData.questions);
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error('Error loading concept cards:', error);
+        document.getElementById('conceptCardsContainer').innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">⚠️</div>
+            <p><strong>Unable to load concepts</strong></p>
+            <p style="font-size: 0.9rem; color: #999; margin-top: var(--spacing-sm);">${error.message}</p>
+            <p style="font-size: 0.85rem; color: #ccc; margin-top: var(--spacing-sm);">Check the browser console for details.</p>
+          </div>
+        `;
+      }
+    }
+
+    function createConceptCard(conceptName, questions) {
+      const card = document.createElement('div');
+      card.className = 'concept-card';
+      
+      // Calculate importance based on questions
+      let maxImportance = 0;
+      questions.forEach(q => {
+        ['mcq', 'fill_in_the_blank', 'short_answer', 'long_answer', 'numerical_problem'].forEach(type => {
+          if (q[type] && q[type].length > 0) {
+            q[type].forEach(item => {
+              if (item.importance) {
+                const importance = parseInt(item.importance);
+                if (importance > maxImportance) {
+                  maxImportance = importance;
+                }
+              }
+            });
+          }
+        });
+      });
+
+      const importanceText = maxImportance > 0 ? `${maxImportance}/5` : 'Essential';
+      
+      const explanation = generateExplanation(questions);
+
+      card.innerHTML = `
+        <div class="concept-card-header" onclick="toggleCard(this)">
+          <div>
+            <div class="concept-card-title">${escapeHtml(conceptName)}</div>
+            <div style="margin-top: var(--spacing-sm);">
+              <span class="importance-badge">Importance: ${importanceText}</span>
+              <span class="importance-badge" style="background-color: #cce5ff;">${questions.length} topic(s)</span>
+            </div>
+          </div>
+          <div class="concept-card-toggle">▼</div>
+        </div>
+        <div class="concept-card-content">
+          <div class="concept-explanation">
+            ${explanation}
+          </div>
+          <div class="animation-placeholder">
+            [Interactive animation will be available here - ${conceptName}]
+          </div>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function generateExplanation(questions) {
+      let explanation = '<strong>Overview:</strong><br>';
+      
+      // Count question types
+      let totalQuestions = 0;
+      const typeCounts = {
+        'MCQ': 0,
+        'Fill in the Blank': 0,
+        'Short Answer': 0,
+        'Long Answer': 0,
+        'Numerical': 0
+      };
+
+      questions.forEach(q => {
+        if (q.mcq && q.mcq.length > 0) typeCounts['MCQ'] += q.mcq.length;
+        if (q.fill_in_the_blank && q.fill_in_the_blank.length > 0) typeCounts['Fill in the Blank'] += q.fill_in_the_blank.length;
+        if (q.short_answer && q.short_answer.length > 0) typeCounts['Short Answer'] += q.short_answer.length;
+        if (q.long_answer && q.long_answer.length > 0) typeCounts['Long Answer'] += q.long_answer.length;
+        if (q.numerical_problem && q.numerical_problem.length > 0) typeCounts['Numerical'] += q.numerical_problem.length;
+      });
+
+      explanation += `This concept covers key fundamentals with available practice questions:<br><ul>`;
+      
+      if (typeCounts['Short Answer'] > 0) {
+        explanation += `<li>${typeCounts['Short Answer']} Short Answer question(s) (2 marks)</li>`;
+      }
+      if (typeCounts['Long Answer'] > 0) {
+        explanation += `<li>${typeCounts['Long Answer']} Long Answer question(s) (3 marks)</li>`;
+      }
+      if (typeCounts['Numerical'] > 0) {
+        explanation += `<li>${typeCounts['Numerical']} Numerical Problem(s)</li>`;
+      }
+      if (typeCounts['Fill in the Blank'] > 0) {
+        explanation += `<li>${typeCounts['Fill in the Blank']} Fill in the Blank question(s)</li>`;
+      }
+      if (typeCounts['MCQ'] > 0) {
+        explanation += `<li>${typeCounts['MCQ']} Multiple Choice question(s)</li>`;
+      }
+      
+      explanation += `</ul><strong>Trial Path:</strong> Enter the Trials section to test your knowledge.`;
+      
+      return explanation;
+    }
+
+    function toggleCard(headerElement) {
+      const card = headerElement.closest('.concept-card');
+      card.classList.toggle('expanded');
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+  </script>
+</body>
+</html>

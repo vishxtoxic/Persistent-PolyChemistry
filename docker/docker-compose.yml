@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  chemistry-site:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: python -m http.server 8000 --directory /app/site

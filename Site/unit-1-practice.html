@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arc 1 Trials - Ishika's Chemistry Arsenal</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css?v=5">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="unit-1.html">Arc 1: Concepts</a></li>
+      <li><a href="unit-1-practice.html" class="active">Arc 1: Trials</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <header>
+      <h1><span class="villainess-icon">♛</span> Arc 1: The Trials</h1>
+      <p>Test your knowledge with different question types. Click "Reveal Answer" to check your work!</p>
+    </header>
+
+    <section class="tabs-container">
+      <!-- Tab Buttons -->
+      <div class="tab-buttons">
+        <button class="tab-button active" data-tab="mcq">MCQ</button>
+        <button class="tab-button" data-tab="fill_in_the_blank">Fill in the Blank</button>
+        <button class="tab-button" data-tab="short_answer">Short Answer</button>
+        <button class="tab-button" data-tab="long_answer">Long Answer</button>
+        <button class="tab-button" data-tab="numerical_problem">Numerical</button>
+      </div>
+
+      <!-- MCQ Tab -->
+      <div id="mcq" class="tab-content active">
+        <h3 style="color: var(--coffee-brown); margin-bottom: var(--spacing-lg);">Multiple Choice Questions</h3>
+        <div id="mcqContainer" class="questions-list">
+          <div class="empty-state">
+            <p>Loading questions...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fill in the Blank Tab -->
+      <div id="fill_in_the_blank" class="tab-content">
+        <h3 style="color: var(--coffee-brown); margin-bottom: var(--spacing-lg);">Fill in the Blank</h3>
+        <div id="fillInTheBlankContainer" class="questions-list">
+          <div class="empty-state">
+            <p>Loading questions...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Short Answer Tab -->
+      <div id="short_answer" class="tab-content">
+        <h3 style="color: var(--coffee-brown); margin-bottom: var(--spacing-lg);">Short Answer Questions</h3>
+        <div id="shortAnswerContainer" class="questions-list">
+          <div class="empty-state">
+            <p>Loading questions...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Long Answer Tab -->
+      <div id="long_answer" class="tab-content">
+        <h3 style="color: var(--coffee-brown); margin-bottom: var(--spacing-lg);">Long Answer Questions</h3>
+        <div id="longAnswerContainer" class="questions-list">
+          <div class="empty-state">
+            <p>Loading questions...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Numerical Problems Tab -->
+      <div id="numerical_problem" class="tab-content">
+        <h3 style="color: var(--coffee-brown); margin-bottom: var(--spacing-lg);">Numerical Problems</h3>
+        <div id="numericalContainer" class="questions-list">
+          <div class="empty-state">
+            <p>Loading questions...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>✨ Ishika's Chemistry Arsenal | Built to help you succeed | Made with 💜 for chemistry lovers</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    const TAB_TYPES = ['mcq', 'fill_in_the_blank', 'short_answer', 'long_answer', 'numerical_problem'];
+    let allQuestions = [];
+
+    // Tab switching functionality
+    document.querySelectorAll('.tab-button').forEach(button => {
+      button.addEventListener('click', function() {
+        const tabName = this.getAttribute('data-tab');
+        switchTab(tabName);
+      });
+    });
+
+    function switchTab(tabName) {
+      // Hide all tabs
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+
+      // Remove active class from all buttons
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      // Show selected tab
+      document.getElementById(tabName).classList.add('active');
+
+      // Add active class to clicked button
+      document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+    }
+
+    // Load and render practice questions on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      renderPracticeQuestions();
+    });
+
+    async function renderPracticeQuestions() {
+      try {
+        // Try multiple fetch paths in case of server configuration variations
+        let response;
+        let errorMessage = '';
+        
+        const pathsToTry = [
+          '/data/unit1.json',
+          '../data/unit1.json',
+          './data/unit1.json'
+        ];
+
+        for (const path of pathsToTry) {
+          try {
+            response = await fetch(path);
+            if (response.ok) {
+              break;
+            } else {
+              errorMessage += `Path ${path}: ${response.status} ${response.statusText} | `;
+            }
+          } catch (e) {
+            errorMessage += `Path ${path}: ${e.message} | `;
+            response = null;
+          }
+        }
+
+        if (!response || !response.ok) {
+          throw new Error(`Failed to fetch data. Attempts: ${errorMessage}`);
+        }
+
+        const data = await response.json();
+        if (!data.questions) {
+          throw new Error('Invalid data format: questions array not found');
+        }
+        
+        allQuestions = data.questions;
+
+        // Render each question type
+        renderMCQs();
+        renderFillInTheBlanks();
+        renderShortAnswers();
+        renderLongAnswers();
+        renderNumericalProblems();
+      } catch (error) {
+        console.error('Error loading practice questions:', error);
+        const errorMessage = `<div class="empty-state">
+          <div class="empty-state-icon">⚠️</div>
+          <p><strong>Unable to load questions</strong></p>
+          <p style="font-size: 0.9rem; color: #999; margin-top: var(--spacing-sm);">${error.message}</p>
+          <p style="font-size: 0.85rem; color: #ccc; margin-top: var(--spacing-sm);">Check the browser console for details.</p>
+        </div>`;
+        document.querySelectorAll('.questions-list').forEach(container => {
+          container.innerHTML = errorMessage;
+        });
+      }
+    }
+
+    function renderMCQs() {
+      const container = document.getElementById('mcqContainer');
+      const questions = [];
+
+      allQuestions.forEach(q => {
+        if (q.mcq && q.mcq.length > 0) {
+          q.mcq.forEach((mcqItem, index) => {
+            questions.push({
+              ...mcqItem,
+              concept: q.concept,
+              qIndex: index
+            });
+          });
+        }
+      });
+
+      if (questions.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📝</div>
+            <p>No MCQ questions available yet. Check back soon!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+      questions.forEach((q, idx) => {
+        const card = createMCQCard(q, idx);
+        container.appendChild(card);
+      });
+    }
+
+    function createMCQCard(question, globalIdx) {
+      const card = document.createElement('div');
+      card.className = 'question-card';
+      const questionId = `mcq_${globalIdx}`;
+
+      let optionsHtml = '';
+      if (question.options && question.options.length > 0) {
+        optionsHtml = `
+          <div class="mcq-options">
+            ${question.options.map((option, i) => `
+              <label class="mcq-option">
+                <input type="radio" name="${questionId}" value="${i}" onchange="checkMCQAnswer('${questionId}', ${i}, ${question.correct_option || 0})">
+                <span class="mcq-option-label">${escapeHtml(option)}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div id="feedback_${questionId}" class="mcq-feedback"></div>
+        `;
+      }
+
+      card.innerHTML = `
+        <div class="question-header">
+          <div class="question-text">${escapeHtml(question.question || question)}</div>
+          <div class="question-meta">
+            <span class="meta-badge marks">Concept: ${escapeHtml(question.concept)}</span>
+          </div>
+        </div>
+        ${optionsHtml}
+      `;
+
+      return card;
+    }
+
+    function checkMCQAnswer(questionId, selected, correct) {
+      const feedbackDiv = document.getElementById(`feedback_${questionId}`);
+      const isCorrect = selected === correct;
+
+      feedbackDiv.classList.add('show');
+      feedbackDiv.classList.toggle('correct', isCorrect);
+      feedbackDiv.classList.toggle('incorrect', !isCorrect);
+
+      if (isCorrect) {
+        feedbackDiv.innerHTML = '✓ Correct! Great job!';
+      } else {
+        feedbackDiv.innerHTML = `✗ Incorrect. The correct answer is option ${correct + 1}.`;
+      }
+    }
+
+    function renderFillInTheBlanks() {
+      const container = document.getElementById('fillInTheBlankContainer');
+      const questions = [];
+
+      allQuestions.forEach(q => {
+        if (q.fill_in_the_blank && q.fill_in_the_blank.length > 0) {
+          q.fill_in_the_blank.forEach((item, index) => {
+            questions.push({
+              ...item,
+              concept: q.concept,
+              qIndex: index
+            });
+          });
+        }
+      });
+
+      if (questions.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📝</div>
+            <p>No Fill in the Blank questions available yet. Check back soon!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+      questions.forEach((q, idx) => {
+        const card = createAnswerCard(q, idx, 'fill_blank');
+        container.appendChild(card);
+      });
+    }
+
+    function renderShortAnswers() {
+      const container = document.getElementById('shortAnswerContainer');
+      const questions = [];
+
+      allQuestions.forEach(q => {
+        if (q.short_answer && q.short_answer.length > 0) {
+          q.short_answer.forEach((item, index) => {
+            questions.push({
+              ...item,
+              concept: q.concept,
+              qIndex: index
+            });
+          });
+        }
+      });
+
+      if (questions.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📝</div>
+            <p>No Short Answer questions available yet. Check back soon!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+      questions.forEach((q, idx) => {
+        const card = createAnswerCard(q, idx, 'short_answer');
+        container.appendChild(card);
+      });
+    }
+
+    function renderLongAnswers() {
+      const container = document.getElementById('longAnswerContainer');
+      const questions = [];
+
+      allQuestions.forEach(q => {
+        if (q.long_answer && q.long_answer.length > 0) {
+          q.long_answer.forEach((item, index) => {
+            questions.push({
+              ...item,
+              concept: q.concept,
+              qIndex: index
+            });
+          });
+        }
+      });
+
+      if (questions.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📝</div>
+            <p>No Long Answer questions available yet. Check back soon!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+      questions.forEach((q, idx) => {
+        const card = createAnswerCard(q, idx, 'long_answer');
+        container.appendChild(card);
+      });
+    }
+
+    function renderNumericalProblems() {
+      const container = document.getElementById('numericalContainer');
+      const questions = [];
+
+      allQuestions.forEach(q => {
+        if (q.numerical_problem && q.numerical_problem.length > 0) {
+          q.numerical_problem.forEach((item, index) => {
+            questions.push({
+              ...item,
+              concept: q.concept,
+              qIndex: index
+            });
+          });
+        }
+      });
+
+      if (questions.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">📝</div>
+            <p>No Numerical Problems available yet. Check back soon!</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = '';
+      questions.forEach((q, idx) => {
+        const card = createNumericalCard(q, idx);
+        container.appendChild(card);
+      });
+    }
+
+    function createAnswerCard(question, globalIdx, type) {
+      const card = document.createElement('div');
+      card.className = 'question-card';
+      const answerId = `answer_${type}_${globalIdx}`;
+
+      let marksDisplay = '';
+      if (question.marks) {
+        marksDisplay = `<span class="meta-badge marks">${question.marks} marks</span>`;
+      }
+
+      let importanceDisplay = '';
+      if (question.importance) {
+        importanceDisplay = `<span class="meta-badge importance">Importance: ${question.importance}</span>`;
+      }
+
+      card.innerHTML = `
+        <div class="question-header">
+          <div class="question-text">${escapeHtml(question.question || question)}</div>
+          <div class="question-meta">
+            ${marksDisplay}
+            ${importanceDisplay}
+          </div>
+        </div>
+        <button class="answer-toggle-btn" onclick="toggleAnswer('${answerId}')">Reveal Answer</button>
+        <div id="${answerId}" class="answer-content">
+          <strong>Answer:</strong><br>
+          ${question.answer ? escapeHtml(question.answer).replace(/\n/g, '<br>') : 'No answer provided'}
+        </div>
+      `;
+
+      return card;
+    }
+
+    function createNumericalCard(question, globalIdx) {
+      const card = document.createElement('div');
+      card.className = 'question-card';
+      const answerId = `answer_numerical_${globalIdx}`;
+
+      let givenHtml = '';
+      if (question.given) {
+        givenHtml = '<div class="problem-given"><h4>Given:</h4>';
+        
+        // Handle both object and simple text formats
+        if (typeof question.given === 'object') {
+          if (question.given.compounds) {
+            givenHtml += `<ul><li>Compounds: ${question.given.compounds.join(', ')}</li>`;
+            if (question.given.atomic_masses) {
+              givenHtml += '<li>Atomic Masses:';
+              Object.entries(question.given.atomic_masses).forEach(([elem, mass]) => {
+                givenHtml += `<br>&nbsp;&nbsp;${elem}: ${mass}`;
+              });
+              givenHtml += '</li>';
+            }
+            givenHtml += '</ul>';
+          } else if (question.given.initial_volume || question.given.conversion_factor) {
+            givenHtml += '<ul>';
+            if (question.given.initial_volume) givenHtml += `<li>Initial Volume: ${question.given.initial_volume}</li>`;
+            if (question.given.conversion_factor) givenHtml += `<li>Conversion Factor: ${question.given.conversion_factor}</li>`;
+            givenHtml += '</ul>';
+          } else {
+            // Generic object display
+            givenHtml += '<ul>';
+            Object.entries(question.given).forEach(([key, value]) => {
+              givenHtml += `<li><strong>${key}:</strong> ${typeof value === 'object' ? JSON.stringify(value) : value}</li>`;
+            });
+            givenHtml += '</ul>';
+          }
+        } else {
+          givenHtml += `<p>${escapeHtml(question.given)}</p>`;
+        }
+        givenHtml += '</div>';
+      }
+
+      let marksDisplay = '';
+      if (question.marks) {
+        marksDisplay = `<span class="meta-badge marks">${question.marks} marks</span>`;
+      }
+
+      let importanceDisplay = '';
+      if (question.importance) {
+        importanceDisplay = `<span class="meta-badge importance">Importance: ${question.importance}</span>`;
+      }
+
+      card.innerHTML = `
+        <div class="question-header">
+          <div class="question-text">${escapeHtml(question.question || question)}</div>
+          <div class="question-meta">
+            ${marksDisplay}
+            ${importanceDisplay}
+          </div>
+        </div>
+        ${givenHtml}
+        <button class="answer-toggle-btn" onclick="toggleAnswer('${answerId}')">Reveal Solution</button>
+        <div id="${answerId}" class="answer-content">
+          <strong>Solution:</strong><br>
+          ${question.answer ? escapeHtml(question.answer).replace(/\n/g, '<br>') : 'No solution provided'}
+        </div>
+      `;
+
+      return card;
+    }
+
+    function toggleAnswer(answerId) {
+      const answerDiv = document.getElementById(answerId);
+      answerDiv.classList.toggle('show');
+      
+      // Change button text
+      const button = event.target;
+      if (answerDiv.classList.contains('show')) {
+        button.textContent = 'Hide Answer';
+        button.style.backgroundColor = '#999';
+      } else {
+        button.textContent = 'Reveal Answer';
+        button.style.backgroundColor = 'var(--sandy-brown)';
+      }
+    }
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return String(text).replace(/[&<>"']/g, m => map[m]);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Install pandas for data validation scripts
+RUN pip install pandas
+
+# Copy project files
+COPY . /app
+
+# Expose port for static server
+EXPOSE 8000
+
+# Run a simple Python HTTP server from the site directory
+CMD ["python", "-m", "http.server", "8000", "--directory", "/app/site"]

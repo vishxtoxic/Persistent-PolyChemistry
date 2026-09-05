@@ -1,0 +1,425 @@
+{
+  "chapter": "Some Basic Concepts of Chemistry",
+  "unit": 1,
+  "state_board": "Karnataka 1st PUC",
+  "questions": [
+    {
+      "id": 1,
+      "concept": "Laws of chemical combination",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [
+        {
+          "question": "State the law of conservation of mass.",
+          "answer": "Matter can neither be created nor destroyed in a chemical reaction. Therefore, the total mass of reactants equals the total mass of products.",
+          "marks": 2,
+          "importance": "5/5",
+          "year_asked": null,
+          "source_url": "https://kseebsolutions.in/1st-puc-chemistry-question-bank-chapter-1/"        }
+      ],
+      "long_answer": [],
+      "numerical_problem": []
+    },
+    {
+      "id": 2,
+      "concept": "Laws of chemical combination",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [
+        {
+          "question": "State the law of definite proportions.",
+          "answer": "A given chemical compound always contains the same elements in the same fixed proportion by mass, irrespective of its source or method of preparation.",
+          "marks": 2,
+          "importance": "5/5",
+          "year_asked": null,
+          "source_url": "https://kseebsolutions.in/1st-puc-chemistry-question-bank-chapter-1/"        }
+      ],
+      "long_answer": [],
+      "numerical_problem": []
+    },
+    {
+      "id": 3,
+      "concept": "Laws of chemical combination",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [
+        {
+          "question": "State and illustrate the law of multiple proportions.",
+          "answer": "When two elements form more than one compound, the masses of one element that combine with a fixed mass of the other are in a simple whole-number ratio. Example: with fixed 14 g nitrogen, oxygen is 16 g in NO and 32 g in NO2; ratio = 1:2.",
+          "marks": 3,
+          "importance": "5/5",
+          "year_asked": null,
+          "source_url": "https://kseebsolutions.in/1st-puc-chemistry-question-bank-chapter-1/"        }
+      ],
+      "numerical_problem": []
+    },
+    {
+      "id": 4,
+      "concept": "Gas laws",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [
+        {
+          "question": "State Avogadro's law and write its mathematical form.",
+          "answer": "Equal volumes of all gases, at the same temperature and pressure, contain equal numbers of molecules. At constant temperature and pressure: V is proportional to n, or V/n = constant.",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "https://byjus.com/kseeb-1st-puc-chemistry-important-questions/"        }
+      ],
+      "long_answer": [],
+      "numerical_problem": []
+    },
+    {
+      "id": 5,
+      "concept": "Mole concept",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [
+        {
+          "question": "Define one mole. State Avogadro's number.",
+          "answer": "One mole is the amount of substance containing exactly 6.022x10^23 specified elementary entities. Avogadro's number is 6.022x10^23 mol^-1.",
+          "marks": 2,
+          "importance": "5/5",
+          "year_asked": null,
+          "source_url": "https://kseebsolutions.in/1st-puc-chemistry-question-bank-chapter-1/"
+        }
+      ],
+      "long_answer": [],
+      "numerical_problem": []
+    },
+    {
+      "id": 6,
+      "concept": "Molar mass",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "Calculate the molar mass of H2O, CO2 and CH4.",
+          "given": {
+            "compounds": ["H2O", "CO2", "CH4"],
+            "atomic_masses": {
+              "H": 1,
+              "O": 16,
+              "C": 12
+            }
+          },
+          "answer": "H2O = 2(1) + 16 = 18 g mol^-1. CO2 = 12 + 2(16) = 44 g mol^-1. CH4 = 12 + 4(1) = 16 g mol^-1",
+          "marks": 3,
+          "importance": "4/5",
+          "year_asked": null,
+          "source_url": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "concept": "Significant figures",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [
+        {
+          "question": "State the rules for significant figures. How many significant figures are in 0.0025, 208, 5005 and 500.0?",
+          "answer": "All non-zero digits are significant. Leading zeros are not significant. Captive zeros are significant. Trailing zeros after a decimal point are significant. Counts: 0.0025 = 2; 208 = 3; 5005 = 4; 500.0 = 4.",
+          "marks": 3,
+          "importance": "5/5",
+          "year_asked": null,
+          "source_url": "https://kseebsolutions.guru/1st-puc-chemistry-question-bank-chapter-1/.pdf"
+        }
+      ],
+      "numerical_problem": []
+    },
+    {
+      "id": 8,
+      "concept": "Measurement",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [
+        {
+          "question": "Differentiate between accuracy and precision.",
+          "answer": "Accuracy is closeness of a measured value to the true value. Precision is closeness of repeated measurements to one another. Measurements can be precise but inaccurate, or accurate on average but imprecise.",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "https://kseebsolutions.guru/1st-puc-chemistry-question-bank-chapter-1/.pdf"
+        }
+      ],
+      "long_answer": [],
+      "numerical_problem": []
+    },
+    {
+      "id": 9,
+      "concept": "Unit conversion",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "What is dimensional analysis? Convert 2 L into m^3.",
+          "given": {
+            "initial_volume": "2 L",
+            "conversion_factor": "1 L = 10^-3 m^3"
+          },
+          "answer": "Dimensional analysis, also called the factor-label method, converts one unit to another using valid conversion factors. Since 1 L = 10^-3 m^3, 2 L = 2 x 10^-3 m^3.",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "concept": "Composition of matter",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [
+        {
+          "question": "Differentiate between a pure substance and a mixture.",
+          "answer": "A pure substance has fixed composition and definite properties; its constituents cannot be separated by physical methods. A mixture has variable composition; its components retain their properties and can generally be separated physically.",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ],
+      "long_answer": [],
+      "numerical_problem": []
+    },
+    {
+      "id": 11,
+      "concept": "Percentage composition",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "Calculate the mass percent of Na, S and O in Na2SO4.",
+          "given": {
+            "compound": "Na2SO4",
+            "atomic_masses": {
+              "Na": 23,
+              "S": 32,
+              "O": 16
+            }
+          },
+          "answer": "Molar mass = 2(23) + 32 + 4(16) = 142 g mol^-1. Percent Na = 46/142 x 100 = 32.39%. Percent S = 32/142 x 100 = 22.54%. Percent O = 64/142 x 100 = 45.07%.",
+          "marks": 3,
+          "importance": "5/5",
+          "year_asked": "Karnataka Board Model QP / Annual Exam",
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "concept": "Empirical and molecular formula",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "A compound contains 4.07% H, 24.27% C and 71.65% Cl. Its molar mass is 98.96 g mol^-1. Find its empirical and molecular formula.",
+          "given": {
+            "percent_H": 4.07,
+            "percent_C": 24.27,
+            "percent_Cl": 71.65,
+            "molar_mass_g_mol": 98.96,
+            "atomic_masses": {
+              "H": 1,
+              "C": 12,
+              "Cl": 35.5
+            }
+          },
+          "answer": "Assume 100 g. H = 4.07 mol; C = 24.27/12 = approximately 2.02 mol; Cl = 71.65/35.5 = approximately 2.02 mol. Divide by 2.02: C:H:Cl = approximately 1:2:1. Empirical formula = CH2Cl. Empirical formula mass = 49.5. n = 98.96/49.5 = approximately 2. Molecular formula = (CH2Cl)2 = C2H4Cl2.",
+          "marks": 3,
+          "importance": "5/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "concept": "Stoichiometry and limiting reagent",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "N2 + 3H2 -> 2NH3. If 2.0x10^3 g N2 reacts with 1.0x10^3 g H2, calculate NH3 formed and the unreacted reactant.",
+          "given": {
+            "reaction": "N2 + 3H2 -> 2NH3",
+            "mass_N2_g": 2000,
+            "mass_H2_g": 1000
+          },
+          "answer": "28 g N2 requires 6 g H2 and produces 34 g NH3. For 2000 g N2, required H2 = (6/28) x 2000 = 428.6 g. Therefore, N2 is limiting and H2 left = 1000 - 428.6 = 571.4 g. NH3 formed = (34/28) x 2000 = 2428.6 g, or approximately 2.43 kg.",
+          "marks": 3,
+          "importance": "5/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "concept": "Stoichiometry and limiting reagent",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "50 kg N2 and 10 kg H2 are mixed to form NH3. Identify the limiting reagent and calculate the mass of NH3 formed.",
+          "given": {
+            "mass_N2_kg": 50,
+            "mass_H2_kg": 10
+          },
+          "answer": "Moles of N2 = 50000/28 = 1785.7 mol. Moles of H2 = 10000/2 = 5000 mol. N2 would require 5357.1 mol H2, but only 5000 mol H2 are available. Thus H2 is limiting. Moles of NH3 = (2/3) x 5000 = 3333.3 mol. Mass of NH3 = 3333.3 x 17 = 56666.7 g, or approximately 56.7 kg.",
+          "marks": 3,
+          "importance": "5/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "concept": "Stoichiometry",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "Calculate the mass of water formed on complete combustion of 16 g methane.",
+          "given": {
+            "reaction": "CH4 + 2O2 -> CO2 + 2H2O",
+            "mass_methane_g": 16
+          },
+          "answer": "CH4 + 2O2 -> CO2 + 2H2O. 16 g CH4 = 1 mol CH4. One mole CH4 forms 2 mol H2O. Mass of water = 2 x 18 = 36 g.",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "concept": "Mole-volume relation",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "How many moles of CH4 are required to produce 22 g CO2 on combustion?",
+          "given": {
+            "reaction": "CH4 + 2O2 -> CO2 + 2H2O",
+            "mass_CO2_g": 22
+          },
+          "answer": "CH4 + 2O2 -> CO2 + 2H2O. One mole CH4 produces one mole CO2. Moles of CO2 = 22/44 = 0.5 mol. Therefore, required CH4 = 0.5 mol.",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "concept": "Concentration terms",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "Define molarity and calculate the molarity of a solution made by dissolving 4 g NaOH in 250 mL solution.",
+          "given": {
+            "mass_NaOH_g": 4,
+            "volume_solution_mL": 250,
+            "molar_mass_NaOH": 40
+          },
+          "answer": "Molarity is moles of solute per litre of solution: M = moles/volume in L. Moles of NaOH = 4/40 = 0.1 mol. Volume = 0.250 L. M = 0.1/0.250 = 0.40 M.",
+          "marks": 3,
+          "importance": "5/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "concept": "Concentration terms",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [
+        {
+          "question": "Define molality and mole fraction.",
+          "answer": "Molality is moles of solute per kilogram of solvent: m = n(solute)/mass of solvent in kg. Mole fraction of a component is its moles divided by total moles of all components: x(i) = n(i)/sum of n.",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ],
+      "long_answer": [],
+      "numerical_problem": []
+    },
+    {
+      "id": 19,
+      "concept": "Solution concentration",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "A solution is made by adding 2 g solute to 18 g water. Calculate mass percent of solute.",
+          "given": {
+            "mass_solute_g": 2,
+            "mass_solvent_g": 18
+          },
+          "answer": "Mass of solution = 2 + 18 = 20 g. Mass percent = (mass of solute/mass of solution) x 100 = (2/20) x 100 = 10%",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "concept": "Gas-volume stoichiometry",
+      "mcq": [],
+      "fill_in_the_blank": [],
+      "short_answer": [],
+      "long_answer": [],
+      "numerical_problem": [
+        {
+          "question": "NH3(g) + HCl(g) -> NH4Cl(s). What volume of NH3 at STP reacts with 47.7 L HCl at STP?",
+          "given": {
+            "reaction": "NH3(g) + HCl(g) -> NH4Cl(s)",
+            "volume_HCl_L": 47.7,
+            "conditions": "STP"
+          },
+          "answer": "The balanced equation has a 1:1 mole ratio. At the same temperature and pressure, gas volumes follow the mole ratio. Therefore, the volume of NH3 required = 47.7 L.",
+          "marks": 2,
+          "importance": "4/5",
+          "year_asked": null,
+          "source": "Karnataka_1st_PUC_Chemistry_Unit_1_Copy_Paste_Ready.pdf"
+        }
+      ]
+    }
+  ]
+}
