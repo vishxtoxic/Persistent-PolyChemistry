@@ -350,16 +350,16 @@ header p {
 
 /* Unit 1 - Sandy Brown */
 .unit-tile.unit-1 {
-  background: linear-gradient(135deg, var(--sandy-brown) 0%, #d4965f 100%);
+  background: linear-gradient(135deg, var(--sandy-brown) 0%, #7f6b5a 100%);
   color: var(--gunmetal);
   background: linear-gradient(135deg, var(--unit-1-color) 0%, #0099cc 100%);
   color: #0a1628;
-  border: 2px solid rgba(0, 217, 255, 0.4);
+  border: 2px solid rgba(6, 7, 7, 0.4);
   box-shadow: 0 0 20px rgba(0, 217, 255, 0.3), inset 0 0 20px rgba(0, 217, 255, 0.1);
 }
 
 .unit-tile.unit-1:hover {
-  box-shadow: 0 0 40px rgba(0, 217, 255, 0.5), inset 0 0 20px rgba(0, 217, 255, 0.2);
+  box-shadow: 0 0 40px rgba(255, 149, 0, 0.5), inset 0 0 20px rgba(0, 217, 255, 0.2);
 }
 
 /* Unit 2 - Icy Blue */
@@ -939,14 +939,17 @@ footer a:hover {
 @media (max-width: 768px) {
   h1 {
     font-size: 1.8rem;
+    color: rgba(26, 25, 25, 0.9);
   }
 
   h2 {
     font-size: 1.5rem;
+    color: rgba(33, 33, 33, 0.9);
   }
 
   h3 {
     font-size: 1.2rem;
+    color: rgba(19, 19, 19, 0.9);
   }
 
   main {
