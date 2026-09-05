@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Data loading utility
 async function loadUnitData() {
   try {
-    const response = await fetch('../data/unit1.json');
+    const response = await fetch('/data/unit1.json');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
