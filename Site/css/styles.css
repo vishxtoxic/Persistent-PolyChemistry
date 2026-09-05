@@ -3,6 +3,7 @@
    ============================================ */
 
 /* CSS Custom Properties - Color Palette */
+:root { color-scheme: dark; }
 :root {
   --bg-primary: #1F2426;
   --bg-surface: #2C3539;
