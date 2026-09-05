@@ -939,17 +939,14 @@ footer a:hover {
 @media (max-width: 768px) {
   h1 {
     font-size: 1.8rem;
-    color: rgba(26, 25, 25, 0.9);
   }
 
   h2 {
     font-size: 1.5rem;
-    color: rgba(33, 33, 33, 0.9);
   }
 
   h3 {
     font-size: 1.2rem;
-    color: rgba(19, 19, 19, 0.9);
   }
 
   main {
