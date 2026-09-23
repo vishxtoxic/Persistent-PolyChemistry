@@ -19,26 +19,26 @@
       <div class="profile-avatar">♛</div>
       <h1 class="profile-title"><span class="villainess-icon">♛</span> Ishika - Persistent Psychopath</h1>
       <p class="profile-subtitle">Master the fundamentals, ace your exams, and explore chemistry with confidence!</p>
-      <div class="profile-tag">Villainess in Training | Computational Chemist | Future Topper</div>
+      <div class="profile-tag">| Computational Chemist | Future Topper |</div>
       <div class="profile-stats">
         <div class="stat-block">
           <div class="stat-number">0</div>
-          <div class="stat-label">Arcs Conquered</div>
+          <div class="stat-label">UnitsConquered</div>
         </div>
         <div class="stat-block">
           <div class="stat-number">0</div>
-          <div class="stat-label">Trials Passed</div>
+          <div class="stat-label">Exams Passed [Coming Soon]</div>
         </div>
         <div class="stat-block">
           <div class="stat-number">0</div>
-          <div class="stat-label">Current Streak</div>
+          <div class="stat-label">Current Streak [Coming soon ]</div>
         </div>
       </div>
     </section>
     <nav>
       <ul>
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="unit-1.html">Unit 1 </a></li>
+        <li><a href="unit-1-practice.html">Unit 1 </a></li>
       </ul>
     </nav>
     <section>
@@ -46,7 +46,7 @@
       <h2 style="text-align: center; color: var(--pastel-coffee); margin-bottom: var(--spacing-xl);">Arcs</h2>
       <div class="units-grid">
         <!-- Unit 1: Active -->
-        <div class="unit-tile unit-1 active" onclick="navigateTo('unit-1.html')">
+        <div class="unit-tile unit-1 active" onclick="navigateTo('unit-1-practice.html')">
           <h3 style="color: rgb(1, 1, 4)">Arc 1</h3>
           <p><strong>Some Basic Concepts of Chemistry</strong></p>
           <p style="font-size: 0.9rem; margin-top: var(--spacing-md); opacity: 0.8;">Study • Test • Learn</p>
@@ -112,7 +112,7 @@
       if (pageName === 'home') {
         document.querySelector('nav a[href="index.html"]').classList.add('active');
       } else if (pageName === 'concepts') {
-        document.querySelector('nav a[href="unit-1.html"]').classList.add('active');
+        document.querySelector('nav a[href="unit-1-practice.html"]').classList.add('active');
       } else if (pageName === 'practice') {
         document.querySelector('nav a[href="unit-1-practice.html"]').classList.add('active');
       }
